@@ -6,7 +6,8 @@
       :key="card.name">
       <Card
         class="list__card"
-        :name="card.name" />
+        :name="card.name"
+        :id="card.id" />
     </li>
   </ul>
 </template>
