@@ -22,7 +22,7 @@
           class="content"
           v-if="createNewCard">
           <input
-            v-model="newCard.name"
+            v-model="newCardName"
             class="input"
             type="text"
             placeholder="Name">
@@ -44,9 +44,7 @@ export default {
   data() {
     return {
       createNewCard: false,
-      newCard: {
-        name: '',
-      },
+      newCardName: '',
     };
   },
   props: {
@@ -68,7 +66,7 @@ export default {
   },
   methods: {
     addCard() {
-      this.$store.commit('ADD_CARD', { name: this.newCard.name, list: this.id });
+      this.$store.commit('ADD_CARD', { name: this.newCardName, list: this.id });
     },
   },
 };
