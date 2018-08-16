@@ -9,6 +9,27 @@
         :name="card.name"
         :id="card.id" />
     </li>
+    <li>
+      <div href="#" class="card list__card">
+        <a
+          class="card-header-title"
+          @click="createNewCard = !createNewCard">
+          Add new Card
+        </a>
+
+        <form
+          @submit.prevent="addCard"
+          class="content"
+          v-if="createNewCard">
+          <input
+            v-model="newCard.name"
+            class="input"
+            type="text"
+            placeholder="Name">
+        </form>
+
+      </div>
+    </li>
   </ul>
 </template>
 
@@ -19,6 +40,14 @@ import Card from './Card.vue';
 export default {
   components: {
     Card,
+  },
+  data() {
+    return {
+      createNewCard: false,
+      newCard: {
+        name: '',
+      },
+    };
   },
   props: {
     name: {
@@ -35,6 +64,11 @@ export default {
     ]),
     listCards() {
       return this.cards.filter(card => card.list === this.id);
+    },
+  },
+  methods: {
+    addCard() {
+      this.$store.commit('ADD_CARD', { name: this.newCard.name, list: this.id });
     },
   },
 };

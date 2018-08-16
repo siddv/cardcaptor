@@ -9,5 +9,24 @@ export default {
       cardToMove,
     ];
   },
+  ADD_CARD(state, { name, list }) {
+    state.cards = [
+      ...state.cards,
+      {
+        id: Math.round(Math.random() * 1000),
+        list,
+        name,
+      },
+    ];
+  },
+  ADD_LIST(state, name) {
+    state.lists = [
+      ...state.lists,
+      {
+        id: Math.round(Math.random() * 1000),
+        name,
+      },
+    ];
+  },
 };
 /* eslint-enable no-param-reassign */

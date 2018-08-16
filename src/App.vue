@@ -7,6 +7,26 @@
         :name="list.name"
         :id="list.id"
         class="column" />
+
+      <div class="column">
+        <a
+          class="title is-4"
+          @click="createNewList = !createNewList">
+          Add new list
+        </a>
+
+        <form
+          @submit.prevent="addList"
+          class="content"
+          v-if="createNewList">
+          <input
+            v-model="listName"
+            class="input"
+            type="text"
+            placeholder="Name">
+        </form>
+      </div>
+
     </section>
   </div>
 </template>
@@ -17,6 +37,12 @@ import List from './components/List.vue';
 
 export default {
   name: 'app',
+  data() {
+    return {
+      createNewList: false,
+      listName: '',
+    };
+  },
   components: {
     List,
   },
@@ -24,6 +50,11 @@ export default {
     ...mapState([
       'lists',
     ]),
+  },
+  methods: {
+    addList() {
+      this.$store.commit('ADD_LIST', this.listName);
+    },
   },
 };
 </script>
