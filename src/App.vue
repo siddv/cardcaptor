@@ -1,9 +1,13 @@
 <template>
-  <div id="app">
-    <List
-      v-for="list in lists"
-      :key="list.name"
-      :cards="list.cards" />
+  <div id="app" class="container">
+    <section class="lists columns">
+      <List
+        v-for="list in lists"
+        :key="list.name"
+        :name="list.name"
+        :cards="list.cards"
+        class="column" />
+    </section>
   </div>
 </template>
 
@@ -32,5 +36,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.lists {
+  display: flex;
 }
 </style>

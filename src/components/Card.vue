@@ -1,6 +1,11 @@
 <template>
   <div class="card">
-    {{ name }}
+    <p class="card-header-title">
+      {{ name }}
+    </p>
+    <div class="content">
+      Dummy content
+    </div>
   </div>
 </template>
 
