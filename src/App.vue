@@ -3,9 +3,9 @@
     <section class="lists columns">
       <List
         v-for="list in lists"
-        :key="list.name"
+        :key="list.id"
         :name="list.name"
-        :cards="list.cards"
+        :id="list.id"
         class="column" />
     </section>
   </div>

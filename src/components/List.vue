@@ -2,7 +2,7 @@
   <ul class="list">
     <h2 class="title is-4">{{ name }}</h2>
     <li
-      v-for="card in cards"
+      v-for="card in listCards"
       :key="card.name">
       <Card
         class="list__card"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 import Card from './Card.vue';
 
 export default {
@@ -24,9 +24,16 @@ export default {
       type: String,
       default: () => '',
     },
-    cards: {
-      type: Array,
-      default: () => [],
+    id: {
+      type: Number,
+    },
+  },
+  computed: {
+    ...mapState([
+      'cards',
+    ]),
+    listCards() {
+      return this.cards.filter(card => card.list === this.id);
     },
   },
 };
