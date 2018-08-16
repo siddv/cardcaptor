@@ -28,5 +28,10 @@ export default {
       },
     ];
   },
+  DELETE_CARD(state, cardId) {
+    state.cards = [
+      ...state.cards.filter(card => card.id !== cardId),
+    ];
+  },
 };
 /* eslint-enable no-param-reassign */

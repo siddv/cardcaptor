@@ -3,7 +3,7 @@
     <p class="card-header-title">
       {{ name }}
     </p>
-    <div class="content">
+    <div class="card-content">
       <div class="select">
         <select v-model="list">
           <option
@@ -14,6 +14,9 @@
           </option>
         </select>
       </div>
+      <a @click.prevent="deleteCard">
+        Delete card
+      </a>
     </div>
   </div>
 </template>
@@ -40,6 +43,11 @@ export default {
     list: {
       get() { return this.lists.filter(list => list.id === this.card.list)[0]; },
       set(list) { this.$store.commit('MOVE_CARD', { listId: list.id, cardId: this.id }); },
+    },
+  },
+  methods: {
+    deleteCard() {
+      this.$store.commit('DELETE_CARD', this.id);
     },
   },
 };
