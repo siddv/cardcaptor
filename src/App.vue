@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <List
+      v-for="list in lists"
+      :key="list.name"
+      :cards="list.cards" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import { mapState } from 'vuex';
+import List from './components/List.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    List,
+  },
+  computed: {
+    ...mapState([
+      'lists',
+    ]),
   },
 };
 </script>
