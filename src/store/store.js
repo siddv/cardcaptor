@@ -1,10 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersist from 'vuex-persist';
 
 import mutations from './mutations';
 import actions from './actions';
 
 Vue.use(Vuex);
+
+const vuexPersist = new VuexPersist({
+  key: 'cardcaptor',
+  storage: localStorage,
+});
 
 export default new Vuex.Store({
   state: {
@@ -43,4 +49,7 @@ export default new Vuex.Store({
   },
   mutations,
   actions,
+  plugins: [
+    vuexPersist.plugin,
+  ],
 });
