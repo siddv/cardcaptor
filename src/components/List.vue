@@ -1,6 +1,7 @@
 <template>
   <ul class="list">
     <h2 class="title is-4">{{ name }}</h2>
+    <a @click.prevent="deleteList">Delete list</a>
     <li
       v-for="card in listCards"
       :key="card.name">
@@ -14,8 +15,8 @@
         <a
           class="card-header-title"
           @click="createNewCard = !createNewCard">
-          Add new Card
-        </a>
+            Add new Card
+          </a>
 
         <form
           @submit.prevent="addCard"
@@ -66,7 +67,13 @@ export default {
   },
   methods: {
     addCard() {
-      this.$store.commit('ADD_CARD', { name: this.newCardName, list: this.id });
+      this.$store.commit('ADD_CARD', {
+        name: this.newCardName,
+        list: this.id,
+      });
+    },
+    deleteList() {
+      this.$store.commit('DELETE_LIST', this.id);
     },
   },
 };

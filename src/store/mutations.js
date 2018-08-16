@@ -33,5 +33,9 @@ export default {
       ...state.cards.filter(card => card.id !== cardId),
     ];
   },
+  DELETE_LIST(state, listId) {
+    state.lists = state.lists.filter(list => list.id !== listId);
+    state.cards = state.cards.filter(card => card.list !== listId);
+  },
 };
 /* eslint-enable no-param-reassign */
