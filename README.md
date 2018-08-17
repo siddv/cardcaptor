@@ -20,6 +20,7 @@ Simple list/card manager built in Vue.
 - Ability to drag and drop cards
   - potentially using [vue-smooth-dnd](https://github.com/kutlugsahin/vue-smooth-dnd)
 - Actually put effort into making the UI nice to use
+- Add more comprehensive test, including testing thr currently untested store
 
 ## How it's built
 
