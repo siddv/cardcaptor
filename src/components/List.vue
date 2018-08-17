@@ -1,7 +1,9 @@
 <template>
   <ul class="list">
     <h2 class="title is-4">{{ name }}</h2>
-    <a @click.prevent="deleteList">Delete list</a>
+    <a
+      class="list__delete"
+      @click.prevent="deleteList">Delete list</a>
     <li
       v-for="card in listCards"
       :key="card.name">
@@ -13,14 +15,14 @@
     <li>
       <div href="#" class="card list__card">
         <a
-          class="card-header-title"
+          class="card-header-title list__add-card"
           @click="createNewCard = !createNewCard">
             Add new Card
           </a>
 
         <form
           @submit.prevent="addCard"
-          class="content"
+          class="content list__new-card-form"
           v-if="createNewCard">
           <input
             v-model="newCardName"
