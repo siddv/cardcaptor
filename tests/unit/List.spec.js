@@ -34,4 +34,26 @@ describe('List.vue', () => {
     });
     expect(wrapper.findAll(Card)).to.have.lengthOf(2);
   });
+
+  it('adds a new card when asked to', () => {
+    const id = 1;
+    const wrapper = shallowMount(List, {
+      propsData: { name, id },
+      store,
+    });
+    expect(wrapper.findAll(Card)).to.have.lengthOf(2);
+    wrapper.vm.addCard();
+    expect(wrapper.findAll(Card)).to.have.lengthOf(3);
+  });
+
+  it('deletes all children cards when asked to', () => {
+    const id = 1;
+    const wrapper = shallowMount(List, {
+      propsData: { name, id },
+      store,
+    });
+    expect(wrapper.findAll(Card)).to.have.lengthOf(3);
+    wrapper.vm.deleteList();
+    expect(wrapper.findAll(Card)).to.have.lengthOf(0);
+  });
 });
